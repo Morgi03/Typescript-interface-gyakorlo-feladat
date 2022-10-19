@@ -47,7 +47,7 @@ class Marathon {
         __classPrivateFieldSet(this, _Marathon_runtime, runtimeinsec, "f");
     }
     result() {
-        return "Marathon: " + __classPrivateFieldGet(this, _Marathon_runtime, "f") / 60 + " min " + __classPrivateFieldGet(this, _Marathon_runtime, "f") % 60 + " s";
+        return "Marathon: " + Math.floor(__classPrivateFieldGet(this, _Marathon_runtime, "f") / 60) + " min " + __classPrivateFieldGet(this, _Marathon_runtime, "f") % 60 + " s";
     }
 }
 _Marathon_runtime = new WeakMap();
@@ -81,7 +81,7 @@ let eredmenyek = [
     new Football('Manchester United', 'Chelsea', new Date("2022.02.12")),
     new Football('Burnley', 'Watford', new Date("2022.04.26")),
     new Marathon('Usain Bolt', new Date("2007.05.20"), 10000),
-    new Marathon('Jesse Owens ', new Date("1939.06.01"), 16000),
+    new Marathon('Jesse Owens ', new Date("1939.06.01"), 16300),
     new Calvinball("Calvin", new Date("2021.01.04")),
     new Calvinball("Jack", new Date("2022.10.19")),
 ];
