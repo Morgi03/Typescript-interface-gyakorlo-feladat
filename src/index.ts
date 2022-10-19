@@ -39,7 +39,7 @@ class Football implements Results {
 class Marathon implements Results {
     winner: string;
     date: Date;
-    #runtime : number;
+    #runtime: number;
     constructor(winner: string, date: Date, runtimeinsec: number) {
         this.winner = winner;
         this.date = date;
@@ -47,7 +47,50 @@ class Marathon implements Results {
     }
 
     result(): string {
-        return "Marathon: "+ this.#runtime/60+" min "+this.#runtime%60+" s";
+        return "Marathon: " + this.#runtime / 60 + " min " + this.#runtime % 60 + " s";
     }
 }
 
+
+
+class Calvinball implements Results {
+    winner: string;
+    date: Date;
+    #resultvar: number;
+    constructor(winner: string, date: Date) {
+        this.winner = this.winners;
+        this.date = date;
+        this.#resultvar = randomResultNumber(10, 100);
+    }
+
+    set winners(thewinner: string) {
+        if (thewinner === 'Calvin' || thewinner === 'Hobbes') {
+            this.winner = thewinner;
+        } else {
+            let num: number = randomResultNumber(1, 2);
+            if (num === 1) {
+                this.winner = "Calvin";
+            } else {
+                this.winner = "Hobbes";
+            }
+        }
+    }
+
+    result(): string {
+        return "Calvinball: " + this.#resultvar + " points";
+    }
+
+}
+
+let eredmenyek: Results[] = [
+new Football('Manchester United', 'Chelsea', new Date("2022.02.12")),
+new Football('Burnley', 'Watford', new Date("2022.04.26")),
+new Marathon('Usain Bolt', new Date("2007.05.20"), 10000),
+new Marathon('Jesse Owens ', new Date("1939.06.01"), 16000),
+new Calvinball("Calvin",new Date("2021.01.04")),
+new Calvinball("Jack",new Date("2022.10.19")),
+];
+
+for (let s of eredmenyek) {
+    console.log(s.result());
+}

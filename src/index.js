@@ -10,7 +10,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _Football_loser, _Football_matchresult, _Football_csapat1goalnum, _Football_csapat2goalnum, _Marathon_runtime;
+var _Football_loser, _Football_matchresult, _Football_csapat1goalnum, _Football_csapat2goalnum, _Marathon_runtime, _Calvinball_resultvar;
 function randomResultNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -51,3 +51,40 @@ class Marathon {
     }
 }
 _Marathon_runtime = new WeakMap();
+class Calvinball {
+    constructor(winner, date) {
+        _Calvinball_resultvar.set(this, void 0);
+        this.winner = this.winners;
+        this.date = date;
+        __classPrivateFieldSet(this, _Calvinball_resultvar, randomResultNumber(10, 100), "f");
+    }
+    set winners(thewinner) {
+        if (thewinner === 'Calvin' || thewinner === 'Hobbes') {
+            this.winner = thewinner;
+        }
+        else {
+            let num = randomResultNumber(1, 2);
+            if (num === 1) {
+                this.winner = "Calvin";
+            }
+            else {
+                this.winner = "Hobbes";
+            }
+        }
+    }
+    result() {
+        return "Calvinball: " + __classPrivateFieldGet(this, _Calvinball_resultvar, "f") + " points";
+    }
+}
+_Calvinball_resultvar = new WeakMap();
+let eredmenyek = [
+    new Football('Manchester United', 'Chelsea', new Date("2022.02.12")),
+    new Football('Burnley', 'Watford', new Date("2022.04.26")),
+    new Marathon('Usain Bolt', new Date("2007.05.20"), 10000),
+    new Marathon('Jesse Owens ', new Date("1939.06.01"), 16000),
+    new Calvinball("Calvin", new Date("2021.01.04")),
+    new Calvinball("Jack", new Date("2022.10.19")),
+];
+for (let s of eredmenyek) {
+    console.log(s.result());
+}
