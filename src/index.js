@@ -54,13 +54,13 @@ _Marathon_runtime = new WeakMap();
 class Calvinball {
     constructor(winner, date) {
         _Calvinball_resultvar.set(this, void 0);
-        this.winner = this.winners;
+        this.setwinner = winner;
         this.date = date;
         __classPrivateFieldSet(this, _Calvinball_resultvar, randomResultNumber(10, 100), "f");
     }
-    set winners(thewinner) {
-        if (thewinner === 'Calvin' || thewinner === 'Hobbes') {
-            this.winner = thewinner;
+    set setwinner(winner) {
+        if (winner === 'Calvin' || winner === 'Hobbes') {
+            this.winner = winner;
         }
         else {
             let num = randomResultNumber(1, 2);
@@ -81,10 +81,15 @@ let eredmenyek = [
     new Football('Manchester United', 'Chelsea', new Date("2022.02.12")),
     new Football('Burnley', 'Watford', new Date("2022.04.26")),
     new Marathon('Usain Bolt', new Date("2007.05.20"), 10000),
-    new Marathon('Jesse Owens ', new Date("1939.06.01"), 16300),
+    new Marathon('Jesse Owens ', new Date("1939.06.01"), 16352),
     new Calvinball("Calvin", new Date("2021.01.04")),
     new Calvinball("Jack", new Date("2022.10.19")),
 ];
 for (let s of eredmenyek) {
+    console.log(s.result());
+}
+let eredmenyek_rendezett = eredmenyek.filter(e => e.date).sort();
+console.log();
+for (let s of eredmenyek_rendezett) {
     console.log(s.result());
 }

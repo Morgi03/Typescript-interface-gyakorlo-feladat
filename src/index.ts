@@ -54,18 +54,18 @@ class Marathon implements Results {
 
 
 class Calvinball implements Results {
-    winner: string;
+    winner!: string;
     date: Date;
     #resultvar: number;
     constructor(winner: string, date: Date) {
-        this.winner = this.winners;
+        this.setwinner = winner;
         this.date = date;
         this.#resultvar = randomResultNumber(10, 100);
     }
 
-    set winners(thewinner: string) {
-        if (thewinner === 'Calvin' || thewinner === 'Hobbes') {
-            this.winner = thewinner;
+    set setwinner(winner: string) {
+        if (winner === 'Calvin' || winner === 'Hobbes') {
+            this.winner = winner;
         } else {
             let num: number = randomResultNumber(1, 2);
             if (num === 1) {
@@ -86,11 +86,17 @@ let eredmenyek: Results[] = [
 new Football('Manchester United', 'Chelsea', new Date("2022.02.12")),
 new Football('Burnley', 'Watford', new Date("2022.04.26")),
 new Marathon('Usain Bolt', new Date("2007.05.20"), 10000),
-new Marathon('Jesse Owens ', new Date("1939.06.01"), 16300),
+new Marathon('Jesse Owens ', new Date("1939.06.01"), 16352),
 new Calvinball("Calvin",new Date("2021.01.04")),
 new Calvinball("Jack",new Date("2022.10.19")),
 ];
 
 for (let s of eredmenyek) {
+    console.log(s.result());
+}
+
+let eredmenyek_rendezett = eredmenyek.filter(e=>e.date).sort();
+console.log();
+for (let s of eredmenyek_rendezett) {
     console.log(s.result());
 }
